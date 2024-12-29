@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小莫的个人网站 - 首页</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="images/logo.png" alt="小莫的头像">
+            <span>小莫(虹芡)</span>
+        </div>
+        <div>
+            <a href="index.html">首页</a>
+            <a href="project.html">项目</a>
+            <a href="word.html">文章</a>
+        </div>
+    </nav>
+    <div class="container">
+        <h1 class="rainbow-text">欢迎来到小莫的个人网站</h1>
+        <div class="card">
+            <p id="current-time"></p>
+        </div>
+        <div class="card">
+            <h2>关于我</h2>
+            <p>我是个人</p>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 小莫的个人网站 | <a href="https://space.bilibili.com/3546581192149863" target="_blank" >虹芡</a></p>
+    </footer>
+    <script>
+        const establishmentDate = new Date('2024-12-20');
+        
+        function updateTime() {
+            const currentTime = new Date();
+            const daysSinceEstablished = Math.floor((currentTime - establishmentDate) / (1000 * 60 * 60 * 24));
+            const timeString = `${currentTime.getHours().toString().padStart(2, '0')}:${currentTime.getMinutes().toString().padStart(2, '0')}:${currentTime.getSeconds().toString().padStart(2, '0')}`;
+            document.getElementById('current-time').innerText = `${timeString}\n该网站于2024年12月20日建立，已经${daysSinceEstablished}天了！`;
+        }
+
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>
+

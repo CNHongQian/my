@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小莫的个人网站 - 项目</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 300px;
+            text-align: center;
+        }
+        .button-group {
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .button-group button {
+            width: 45%;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="images/logo.png" alt="小莫的头像">
+            <span>小莫(虹芡)</span>
+        </div>
+        <div>
+            <a href="index.html">首页</a>
+            <a href="project.html">项目</a>
+            <a href="word.html">文章</a>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>项目</h1>
+        <p>所有项目均为原创且开源（未经允许不可商用）</p>
+        <div class="card">
+            <h2>文件加密解密工具 [Python]【密码:sxmy】</h2>
+            <p>基于Python的文件加密解密工具。在压缩包内包含python原文件和windows可执行文件。</p>
+            <button onclick="showVerification('https://wwro.lanzouq.com/iyIkB2jbak2f')" class="button">下载项目压缩包</button>
+        </div>
+        <div class="card">
+            <h2>批量调整图片大小工具 [Python]【密码:sxmy】</h2>
+            <p>基于Python的批量调整图片大小工具。在压缩包内包含python原文件和windows可执行文件。</p>
+            <button onclick="showVerification('https://wwro.lanzouq.com/inmQ52jbakpi')" class="button">下载项目压缩包</button>
+        </div>
+        <div class="card">
+            <h2>视频转PPT工具 [Python]【密码:sxmy】</h2>
+            <p>基于Python的视频转PPT工具。在压缩包内包含python原文件和windows可执行文件。</p>
+            <button onclick="showVerification('https://wwro.lanzouq.com/i1yw82jbamaf')" class="button">下载项目压缩包</button>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 小莫的个人网站 | <a href="https://space.bilibili.com/3546581192149863" target="_blank" >虹芡</a></p>
+    </footer>
+
+    <div id="verificationModal" class="modal">
+        <div class="modal-content">
+            <h2>请输入验证码</h2>
+            <p>（虽然看上去没什么用）</p>
+            <h3>验证码： <span id="captcha"></span></h3>
+            <input type="text" id="userInput" placeholder="输入验证码">
+            <div class="button-group">
+                <button onclick="verify()">验证</button>
+                <button onclick="closeModal()">取消</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentUrl = '';
+        let captcha = '';
+
+        function generateCaptcha() {
+            captcha = Math.random().toString(36).substring(2, 8).toUpperCase();
+            document.getElementById('captcha').innerText = captcha;
+        }
+
+        function showVerification(url) {
+            currentUrl = url;
+            generateCaptcha();
+            document.getElementById('userInput').value = '';
+            document.getElementById('verificationModal').style.display = 'block';
+        }
+
+        function verify() {
+            const userInput = document.getElementById('userInput').value.toUpperCase();
+            if (userInput === captcha) {
+                window.open(currentUrl, '_blank');
+                document.getElementById('verificationModal').style.display = 'none';
+            } else {
+                alert('验证码错误，请重试');
+                generateCaptcha();
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('verificationModal').style.display = 'none';
+            document.getElementById('userInput').value = '';
+        }
+    </script>
+</body>
+</html>
+
